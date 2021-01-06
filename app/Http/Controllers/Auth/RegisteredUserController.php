@@ -36,12 +36,16 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
+            'image' => ['required', 'mimes:jpeg,jpg,png'],
         ]);
+
+        $image = $request['image']->store('public/avatar');
 
         Auth::login($user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'profilePic' => $image,
         ]));
 
         event(new Registered($user));
