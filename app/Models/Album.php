@@ -10,7 +10,7 @@ use App\Models\User;
 
 class Album extends Model
 {
-    protected $guarded =[];
+    protected $guarded = [];
 
     /**
      * 
