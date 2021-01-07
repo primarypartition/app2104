@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Album;
+
+use App\Models\Album;
+
 class HomeController extends Controller
 {
     /**
@@ -25,6 +27,5 @@ class HomeController extends Controller
     {
         return redirect()->to('/');
         //return view('home');
-    }
-  
+    }  
 }

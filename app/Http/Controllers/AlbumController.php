@@ -49,7 +49,7 @@ class AlbumController extends Controller
         ]);
 
         $imageName = $request->image->hashName();
-        $request->image->move(public_path('album'),$imageName);
+        $request->image->move(public_path('album'), $imageName);
       
         $album = Album::create([
             'name' => $request->name,

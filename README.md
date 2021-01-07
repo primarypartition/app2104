@@ -98,6 +98,10 @@ public function boot()
 
 > npm install @fontawesome/fontawesome-free
 
+> https://sweetalert.js.org/guides/
+
+> https://lokeshdhakar.com/projects/lightbox2/
+
 
 ## Payment
 
@@ -113,5 +117,12 @@ https://stripe.com/docs/testing
 "cartalyst/stripe-laravel": "^13.0"
 composer install && composer update
 composer dump-autoload
+
+```
+
+## Mail
+
+```
+> https://mailtrap.io/
 
 ```

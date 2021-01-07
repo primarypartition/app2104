@@ -13,6 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js" defer></script>
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -41,33 +42,30 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <span class="caret"></span>
+                                Browse
+                            </a>                              
 
-                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    
-                                  
-                                     <span class="caret"></span>
-                                    Browse
-                                </a>
-                              
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @foreach(App\Models\Category::all() as $cat)
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @foreach(App\Models\Category::all() as $cat)
                                     <a class="dropdown-item" href="/{{$cat->id}}/category">{{$cat->name}}</a>
-                                    @endforeach
-
-                                 </div>
-                            </li>
-
-
-                       @if(Auth::check())
+                                @endforeach
+                            </div>
+                        </li>
 
 
-                        <a class="navbar-brand" href="{{route('user.album',[auth()->user()->id])}}">My Album</a>
+                        @if(Auth::check())
+                            <a class="navbar-brand" href="{{route('user.album',[auth()->user()->id])}}">
+                                My Album
+                            </a>
 
-                        <a class="navbar-brand" href="{{ url('/albums') }}">My Dashboard</a>
-                      
+                            <a class="navbar-brand" href="{{ url('/albums') }}">
+                                My Dashboard
+                            </a>                      
                         @endif
+                        
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
