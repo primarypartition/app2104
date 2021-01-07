@@ -64,7 +64,7 @@
 			}
 		},
 		created(){
-			this.getCategories()
+			this.getCategories();
 		},
 		methods:{			
 			getCategories(){

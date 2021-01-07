@@ -26,7 +26,7 @@ class FrontendCOntroller extends Controller
      */
     public function userAlbum($id)
     {
-        $albums  = Album::where('user_id', $id)->get();
+        $albums = Album::where('user_id', $id)->get();
         
         if(Auth::check())
         {
@@ -34,7 +34,7 @@ class FrontendCOntroller extends Controller
     	   $follows = (new User)->amIfollowing($userId);
         }
 
-        $user = User::where('id',$id)->first();
+        $user = User::where('id', $id)->first();
         $userBgPic= $user->bgpic;
         
         return view('user-album', compact('albums',

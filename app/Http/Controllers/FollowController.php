@@ -15,7 +15,8 @@ class FollowController extends Controller
     public function followUnfollow(Request $request)
     {
     	$followerId = User::find(auth()->user()->id);
-    	$followingId = User::find($request->userId);
+        $followingId = User::find($request->userId);
+        
         $followerId->following()->toggle($followingId);
         
     	return redirect()->back();
@@ -51,7 +52,7 @@ class FollowController extends Controller
 		$image = $request->image->store('public/avatar');
         $authUser = auth()->user()->id;
         
-        $user = User::where('id', $authUser)->update(['profilePic'=>$image]);
+        $user = User::where('id', $authUser)->update(['profilePic' => $image]);
         
 		return redirect()->back();
 	}
@@ -77,7 +78,7 @@ class FollowController extends Controller
         
 		$image = $request->image->store('public/avatar');
 		$authUser = auth()->user()->id;
-        $user = User::where('id',$authUser)->update(['bgpic'=>$image]);
+        $user = User::where('id', $authUser)->update(['bgpic'=>$image]);
         
 		return redirect()->back();
 	}

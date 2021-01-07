@@ -4,27 +4,22 @@
 <div class="container">
          
 @if($userBgPic)
-<img src="{{Storage::url($userBgPic)}}" style="width: 100%;">
+    <img src="{{Storage::url($userBgPic)}}" style="width: 100%;">
+@else
+    <img src="{{asset('banner')}}/banner.jpg" style="width: 100%;">  
+@endif        
 
-  @else
-<img src="{{asset('banner')}}/banner.jpg" style="width: 100%;"> 
- 
-@endif   
+<br><br>
 
+@if(Auth::check()&&auth()->user()->id != $userId)
+    <follow user-id="{{$userId}}" follows="{{$follows}}"></follow>
+@endif
 
-       
+<div class="row">
+    @foreach($albums as $album)
 
-            <br><br>
-            @if(Auth::check()&&auth()->user()->id!=$userId)
-
-                <follow user-id="{{$userId}}" follows="{{$follows}}"></follow>
-            @endif
-
-    <div class="row">
-        @foreach($albums as $album)
-
-        <div class="col-lg-3">
-            <div class="card">
+    <div class="col-lg-3">
+        <div class="card">
             <img src="{{asset('album')}}/{{$album->image}}" class="card-img-top">
 
             <div class="card-body">
@@ -34,16 +29,13 @@
                 </center>
             </div>
         </div>
-
-    </div>
-    
-        @endforeach
-
     </div>
 
-        <br>
-        <br>
+    @endforeach
+</div>
 
+<br>
+<br>
 
 </div>
 @endsection

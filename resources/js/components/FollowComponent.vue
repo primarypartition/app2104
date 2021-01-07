@@ -1,31 +1,30 @@
 <template>
     <div>
-        <button class="btn btn-primary ml-4" @click.prevent="followUser" v-text="buttonText"></button>
+        <button class="btn btn-primary ml-4" @click.prevent="followUser" v-text="buttonText">
+        </button>
     </div>
 </template>
 
 <script type="text/javascript">
 	export default{
-		props:['userId','follows'],
+		props:['userId', 'follows'],
 		data(){
-			return{
-				status:this.follows
-
+			return {
+				status: this.follows
 			}
 		},
 		methods:{
 			followUser(){
 				axios.post('/follow',{
-					userId:this.userId
+					userId: this.userId
 				}).then(response=>{
-					this.status = !this.status
+					this.status = !this.status;
 				}).catch(error=>{alert('error')})
 			}
-		},
-		
-		 computed: {
+		},		
+        computed: {
             buttonText(){
-                return (this.status) ? 'Unfollow'  :'Follow';
+                return (this.status) ? 'Unfollow' : 'Follow';
             }
         }
 	}

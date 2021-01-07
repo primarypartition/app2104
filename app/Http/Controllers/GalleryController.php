@@ -78,12 +78,12 @@ class GalleryController extends Controller
      */
     public function viewAlbum($slug, $id)
     {        
-       $albums = Album::with('albumimages')
-                      ->where('slug', $slug)
-                      ->where('id', $id)->get();
+        $albums = Album::with('albumimages')
+                        ->where('slug', $slug)
+                        ->where('id', $id)->get();
 
-       if(Auth::check()) {
-            $userId  = Album::where('id', $id)
+        if(Auth::check()) {
+            $userId = Album::where('id', $id)
                             ->first()
                             ->user_id;
 
